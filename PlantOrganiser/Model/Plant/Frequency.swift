@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Frequency: Identifiable {
+final class Frequency {
   enum Unit : String, Identifiable, Hashable, CaseIterable, Codable {
     var id: Self { self }
 

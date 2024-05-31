@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct PlantCare: View {
-  @Bindable var careInstruction: PlantCareInstruction
+  @Binding var careInstruction: PlantCareInstruction
 
   @State private var showeringNeeded = false
   @State private var showeringFrequency = Frequency(value: 1, unit: .week)
   @State private var sprinklingNeeded = false
   @State private var sprinklingFrequency = Frequency(value: 1, unit: .day)
 
-  init(careInstruction: PlantCareInstruction) {
-    self.careInstruction = careInstruction
+  init(careInstruction: Binding<PlantCareInstruction>) {
+    self._careInstruction = careInstruction
   }
 
   var body: some View {
@@ -38,7 +38,7 @@ struct PlantCare: View {
 
 #Preview {
   Form {
-    PlantCare(careInstruction: defaultCareInstruction)
+    PlantCare(careInstruction: .constant(defaultCareInstruction))
       .modelContainer(SampleData.shared.modelContainer)
   }
 }

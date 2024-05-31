@@ -6,8 +6,7 @@ struct PlantDetail: View {
   @Environment(\.dismiss) private var dismiss
   @Environment(\.modelContext) private var modelContext
 
-  @State private var wateringFrequency: Frequency = Frequency(value: 1, unit: .week)
-
+  @State private var plantCareInstruction: PlantCareInstruction = defaultCareInstruction
 
   private let isNew: Bool
 
@@ -20,7 +19,7 @@ struct PlantDetail: View {
     VStack {
       Form {
         TextField("Plant name", text: $plant.name)
-        
+        PlantCare(careInstruction: $plant.careInstruction)
       }
     }
     .navigationTitle(isNew ? "New Plant" : "Plant")
@@ -52,10 +51,7 @@ struct PlantDetail: View {
 #Preview("New") {
   NavigationStack {
     PlantDetail(
-      plant: Plant(
-        name: "",
-        careInstruction: defaultCareInstruction
-      ),
+      plant: SampleData.shared.plant,
       isNew: true
     )
       .navigationBarTitleDisplayMode(.inline)
