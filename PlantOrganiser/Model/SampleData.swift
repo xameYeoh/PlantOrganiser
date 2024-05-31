@@ -4,12 +4,9 @@ import SwiftData
 @MainActor
 struct SampleData {
   static let shared = SampleData()
-  let plant = Plant(name: "Ficus")
-  let plants = [
-    Plant(name: "Ficus"),
-    Plant(name: "Monsterra"),
-    Plant(name: "Palm"),
-  ]
+
+  let plant: Plant
+  let plants: Array<Plant>
   let modelContainer: ModelContainer
 
   var context: ModelContext {
@@ -17,6 +14,12 @@ struct SampleData {
   }
 
   private init() {
+    plant = Plant(name: "Ficus")
+    plants = [
+      Plant(name: "Ficus"),
+      Plant(name: "Monsterra"),
+      Plant(name: "Palm"),
+    ]
     let schema = Schema([
       Plant.self,
     ])

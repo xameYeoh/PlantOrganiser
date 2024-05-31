@@ -8,11 +8,6 @@ struct PlantDetail: View {
 
   @State private var wateringFrequency: Frequency = Frequency(value: 1, unit: .week)
 
-  @State private var showeringNeeded = false
-  @State private var showeringFrequency = Frequency(value: 1, unit: .week)
-
-  @State private var sprinklingNeeded = false
-  @State private var sprinklingFrequency = Frequency(value: 1, unit: .day)
 
   private let isNew: Bool
 
@@ -25,19 +20,7 @@ struct PlantDetail: View {
     VStack {
       Form {
         TextField("Plant name", text: $plant.name)
-        FrequencyPicker("Water every", frequency: $wateringFrequency)
-        Section {
-          Toggle(isOn: $showeringNeeded, label: { Text("Needs showering") })
-          if showeringNeeded {
-            FrequencyPicker("Every", frequency: $showeringFrequency)
-          }
-        }
-        Section {
-          Toggle(isOn: $sprinklingNeeded, label: { Text("Needs sprinkling") })
-          if sprinklingNeeded {
-            FrequencyPicker("Every", frequency: $sprinklingFrequency)
-          }
-        }
+        
       }
     }
     .navigationTitle(isNew ? "New Plant" : "Plant")
@@ -68,7 +51,13 @@ struct PlantDetail: View {
 
 #Preview("New") {
   NavigationStack {
-    PlantDetail(plant: Plant(name: ""), isNew: true)
+    PlantDetail(
+      plant: Plant(
+        name: "",
+        careInstruction: defaultCareInstruction
+      ),
+      isNew: true
+    )
       .navigationBarTitleDisplayMode(.inline)
   }
   .modelContainer(SampleData.shared.modelContainer)
