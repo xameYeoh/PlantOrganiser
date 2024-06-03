@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct FrequencyPicker: View {
-  @Binding private var frequency: Frequency
+  @Bindable private var frequency: Frequency
   private let label: String
 
-  init(_ label: String, frequency: Binding<Frequency>) {
+  init(_ label: String, frequency: Frequency) {
     self.label = label
-    self._frequency = frequency
+    self.frequency = frequency
   }
 
   var body: some View {
@@ -26,4 +26,8 @@ struct FrequencyPicker: View {
       }
     }
   }
+}
+
+#Preview {
+  FrequencyPicker("Frequency", frequency: SampleData.shared.frequency)
 }

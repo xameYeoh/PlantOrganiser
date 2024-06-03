@@ -8,6 +8,7 @@ struct SampleData {
   let plant: Plant
   let plants: Array<Plant>
   let modelContainer: ModelContainer
+  let frequency: Frequency
 
   var context: ModelContext {
     modelContainer.mainContext
@@ -16,12 +17,15 @@ struct SampleData {
   private init() {
     plant = Plant(name: "Ficus")
     plants = [
-      Plant(name: "Ficus"),
+      plant,
       Plant(name: "Monsterra"),
       Plant(name: "Palm"),
     ]
+    frequency = Frequency(value: 1, unit: .day)
     let schema = Schema([
       Plant.self,
+      PlantCareInstruction.self,
+      Frequency.self,
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 

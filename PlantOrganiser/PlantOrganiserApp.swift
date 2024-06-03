@@ -6,6 +6,8 @@ struct PlantOrganiserApp: App {
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([
       Plant.self,
+      PlantCareInstruction.self,
+      Frequency.self,
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

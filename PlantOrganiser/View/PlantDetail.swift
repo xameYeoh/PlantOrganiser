@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct PlantDetail: View {
   @Bindable private var plant: Plant
@@ -19,7 +20,7 @@ struct PlantDetail: View {
     VStack {
       Form {
         TextField("Plant name", text: $plant.name)
-        PlantCare(careInstruction: $plant.careInstruction)
+        PlantCare(careInstruction: plant.careInstruction)
       }
     }
     .navigationTitle(isNew ? "New Plant" : "Plant")

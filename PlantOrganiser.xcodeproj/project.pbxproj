@@ -21,6 +21,7 @@
 		335E1D382C0623740061875C /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D372C0623740061875C /* Frequency.swift */; };
 		335E1D3A2C08C3BA0061875C /* FrequencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D392C08C3BA0061875C /* FrequencyPicker.swift */; };
 		335E1D3C2C09C5C50061875C /* PlantCare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D3B2C09C5C50061875C /* PlantCare.swift */; };
+		335E1D3E2C0DB86F0061875C /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D3D2C0DB86F0061875C /* PlantList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		335E1D372C0623740061875C /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		335E1D392C08C3BA0061875C /* FrequencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPicker.swift; sourceTree = "<group>"; };
 		335E1D3B2C09C5C50061875C /* PlantCare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCare.swift; sourceTree = "<group>"; };
+		335E1D3D2C0DB86F0061875C /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				3312BCAE2C05CE96000D0ACF /* PlantDetail.swift */,
 				335E1D392C08C3BA0061875C /* FrequencyPicker.swift */,
 				335E1D3B2C09C5C50061875C /* PlantCare.swift */,
+				335E1D3D2C0DB86F0061875C /* PlantList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335E1D3A2C08C3BA0061875C /* FrequencyPicker.swift in Sources */,
+				335E1D3E2C0DB86F0061875C /* PlantList.swift in Sources */,
 				335E1D382C0623740061875C /* Frequency.swift in Sources */,
 				3312BC802C05C518000D0ACF /* ContentView.swift in Sources */,
 				335E1D362C05DE660061875C /* SampleData.swift in Sources */,
