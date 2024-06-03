@@ -17,6 +17,7 @@ struct PlantList: View {
               PlantDetail(plant: plant)
             } label: {
               Text(plant.name)
+
             }
           }
           .onDelete(perform: deleteItems)
@@ -29,8 +30,10 @@ struct PlantList: View {
     }
     .navigationTitle("Plants")
     .toolbar {
-      ToolbarItem {
-        EditButton()
+      if !plants.isEmpty {
+        ToolbarItem {
+          EditButton()
+        }
       }
       ToolbarItem {
         Button(action: addPlant) {
