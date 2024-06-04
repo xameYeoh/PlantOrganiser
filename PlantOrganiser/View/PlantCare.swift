@@ -3,13 +3,19 @@ import SwiftUI
 struct PlantCare: View {
   @Bindable var careInstruction: PlantCareInstruction
 
-  @State private var showeringNeeded = false
-  @State private var showeringFrequency = Frequency(value: 1, unit: .week)
-  @State private var sprinklingNeeded = false
-  @State private var sprinklingFrequency = Frequency(value: 1, unit: .day)
+  @State private var showeringNeeded: Bool
+  @State private var showeringFrequency: Frequency
+  @State private var sprinklingNeeded: Bool
+  @State private var sprinklingFrequency: Frequency
 
   init(careInstruction: PlantCareInstruction) {
     self.careInstruction = careInstruction
+    self.showeringNeeded = careInstruction.showeringFrequency != nil
+    self.showeringFrequency = careInstruction.showeringFrequency
+    ?? Frequency(value: 1, unit: .week)
+    self.sprinklingNeeded = careInstruction.sprinklingFrequency != nil
+    self.sprinklingFrequency = careInstruction.sprinklingFrequency
+    ?? Frequency(value: 4, unit: .hour)
   }
 
   var body: some View {
