@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Card: View {
   @Bindable private var plant: Plant
-  @State private var image: Image?
+  @State private var image: Image = Image("plant-placeholder")
 
   init(plant: Plant) {
     self.plant = plant
@@ -10,34 +10,25 @@ struct Card: View {
 
   var body: some View {
     VStack(alignment: .leading) {
-      Group {
-        if let image {
-          image
-            .centerCropped()
-        } else {
-          ImagePicker(plant: plant, { pickedImage in
-            image = pickedImage
-          })
-        }
-      }
-      .frame(maxWidth: .infinity, maxHeight: 200)
+      image
+        .centerCropped()
+        .frame(maxWidth: .infinity, maxHeight: 200)
 
-      text
+      HStack(alignment: .center) {
+        Text(plant.name)
+          .font(.title)
+        Spacer()
+        ImagePicker(plant: plant, { pickedImage in
+          image = pickedImage ?? Image("plant-placeholder")
+        })
+      }
+      .padding(.horizontal, 30)
+      .padding(.top, 10)
+      .padding(.bottom, 20)
     }
     .background(Color.white)
     .clipShape(RoundedRectangle(cornerRadius: 25.0))
     .shadow(radius: 8)
-  }
-
-
-  var text: some View {
-    VStack {
-      Text(plant.name)
-        .padding(.top, 10)
-        .padding(.horizontal, 30)
-        .padding(.bottom, 25)
-        .font(.title)
-    }
   }
 }
 

@@ -18,7 +18,7 @@ struct ImagePicker: View {
       selection: $item,
       matching: .images,
       label: {
-        Image(systemName: "photo")
+        Text("Change photo")
       }
     )
     .onChange(of: item) {
