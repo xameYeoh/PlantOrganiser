@@ -8,9 +8,9 @@ let defaultCareInstruction = PlantCareInstruction(
 
 @Model
 final class PlantCareInstruction {
-  var wateringFrequency: Frequency
-  var showeringFrequency: Frequency?
-  var sprinklingFrequency: Frequency?
+  @Relationship(deleteRule: .cascade) var wateringFrequency: Frequency
+  @Relationship(deleteRule: .cascade) var showeringFrequency: Frequency?
+  @Relationship(deleteRule: .cascade) var sprinklingFrequency: Frequency?
 
   init(
     wateringFrequency: Frequency,

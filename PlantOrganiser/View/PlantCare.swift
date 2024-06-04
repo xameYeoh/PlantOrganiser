@@ -44,7 +44,7 @@ struct PlantCare: View {
 
 #Preview {
   Form {
-    PlantCare(careInstruction: defaultCareInstruction)
+    PlantCare(careInstruction: SampleData.shared.plant.careInstruction)
       .modelContainer(SampleData.shared.modelContainer)
   }
 }

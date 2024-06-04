@@ -19,6 +19,7 @@ struct PlantCard: View {
           Text(plant.name)
             .font(.title)
             .foregroundStyle(Color.black)
+            .padding(.bottom, 4)
 
           Text("Water every: \(plant.careInstruction.wateringFrequency.value) \(plant.careInstruction.wateringFrequency.unit.rawValue)")
 

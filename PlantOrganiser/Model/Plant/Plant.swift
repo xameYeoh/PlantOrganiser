@@ -4,12 +4,14 @@ import SwiftData
 @Model
 final class Plant {
   var name: String
-  var careInstruction: PlantCareInstruction
+  @Relationship(deleteRule: .cascade) var careInstruction: PlantCareInstruction
   var image: Data?
 
   init(
     name: String,
-    careInstruction: PlantCareInstruction = defaultCareInstruction,
+    careInstruction: PlantCareInstruction = PlantCareInstruction(
+      wateringFrequency: Frequency(value: 1, unit: .week)
+    ),
     image: Data? = nil
   ) {
     self.name = name

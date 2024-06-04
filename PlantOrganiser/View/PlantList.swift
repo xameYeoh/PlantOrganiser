@@ -20,7 +20,6 @@ struct PlantList: View {
                 PlantCard(plant: plant)
               }
             }
-            .onDelete(perform: deleteItems)
           }
           .padding()
         }
@@ -32,11 +31,6 @@ struct PlantList: View {
     }
     .navigationTitle("Plants")
     .toolbar {
-      if !plants.isEmpty {
-        ToolbarItem {
-          EditButton()
-        }
-      }
       ToolbarItem {
         Button(action: addPlant) {
           Label("Add plant", systemImage: "plus")
@@ -55,14 +49,6 @@ struct PlantList: View {
     let newPlant = Plant(name: "")
     modelContext.insert(newPlant)
     self.newPlant = newPlant
-  }
-
-  private func deleteItems(offsets: IndexSet) {
-    withAnimation {
-      for index in offsets {
-        modelContext.delete(plants[index])
-      }
-    }
   }
 }
 
