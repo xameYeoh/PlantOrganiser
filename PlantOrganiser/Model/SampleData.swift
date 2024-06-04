@@ -15,7 +15,14 @@ struct SampleData {
   }
 
   private init() {
-    plant = Plant(name: "Ficus")
+    plant = Plant(
+      name: "Ficus",
+      careInstruction: PlantCareInstruction(
+        wateringFrequency: Frequency(value: 1, unit: .day),
+        showeringFrequency: Frequency(value: 1, unit: .day),
+        sprinklingFrequency: Frequency(value: 1, unit: .day)
+      )
+    )
     plants = [
       plant,
       Plant(name: "Monsterra"),

@@ -23,12 +23,29 @@ struct ImagePicker: View {
     )
     .onChange(of: item) {
       Task {
-        let pickedImage = try? await item?.loadTransferable(type: Image.self)
-        saveImage(pickedImage)
+        plant.image = try? await item?.loadTransferable(type: Data.self)
       }
     }
   }
 }
+//func saveImageToDocumentsDirectory(image: UIImage) -> String? {
+//  guard let data = image.jpegData(compressionQuality: 1) else { return nil }
+//  let filename = UUID().uuidString + ".jpg"
+//  let url = getDocumentsDirectory().appendingPathComponent(filename)
+//
+//  do {
+//    try data.write(to: url)
+//    return filename
+//  } catch {
+//    print("Failed to save image: \(error)")
+//    return nil
+//  }
+//}
+
+//func loadImageFromDocumentsDirectory(filename: String) -> UIImage? {
+//  let url = getDocumentsDirectory().appendingPathComponent(filename)
+//  return UIImage(contentsOfFile: url.path)
+//}
 
 #Preview {
   ImagePicker(plant: SampleData.shared.plant) {_ in }

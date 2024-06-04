@@ -5,15 +5,15 @@ import SwiftData
 final class Plant {
   var name: String
   var careInstruction: PlantCareInstruction
-  var imagePath: String?
+  var image: Data?
 
   init(
     name: String,
     careInstruction: PlantCareInstruction = defaultCareInstruction,
-    imagePath: String? = nil
+    image: Data? = nil
   ) {
     self.name = name
     self.careInstruction = careInstruction
-    self.imagePath = imagePath
+    self.image = image
   }
 }

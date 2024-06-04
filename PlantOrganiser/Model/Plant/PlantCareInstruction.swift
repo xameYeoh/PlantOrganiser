@@ -14,11 +14,11 @@ final class PlantCareInstruction {
 
   init(
     wateringFrequency: Frequency,
-    showerFrequency: Frequency? = nil,
+    showeringFrequency: Frequency? = nil,
     sprinklingFrequency: Frequency? = nil
   ) {
     self.wateringFrequency = wateringFrequency
-    self.showeringFrequency = showerFrequency
+    self.showeringFrequency = showeringFrequency
     self.sprinklingFrequency = sprinklingFrequency
   }
 }

@@ -11,16 +11,18 @@ struct PlantList: View {
   var body: some View {
     Group {
       if !plants.isEmpty{
-        List {
-          ForEach(plants) { plant in
-            NavigationLink {
-              PlantDetail(plant: plant)
-            } label: {
-              Text(plant.name)
-
+        ScrollView {
+          VStack(spacing: 30) {
+            ForEach(plants) { plant in
+              NavigationLink {
+                PlantDetail(plant: plant)
+              } label: {
+                PlantCard(plant: plant)
+              }
             }
+            .onDelete(perform: deleteItems)
           }
-          .onDelete(perform: deleteItems)
+          .padding()
         }
       } else {
         ContentUnavailableView {
