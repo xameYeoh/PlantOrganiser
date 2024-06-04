@@ -9,33 +9,34 @@ struct Card: View {
   }
 
   var body: some View {
-    VStack {
+    VStack(alignment: .leading) {
       Group {
         if let image {
           image
-            .resizable()
-            .scaledToFill()
+            .centerCropped()
         } else {
           ImagePicker(plant: plant, { pickedImage in
             image = pickedImage
           })
         }
       }
-      .frame(width: 300, height: 300)
-
+      .frame(maxWidth: .infinity, maxHeight: 200)
 
       text
-        .padding(.vertical, 24)
     }
     .background(Color.white)
     .clipShape(RoundedRectangle(cornerRadius: 25.0))
     .shadow(radius: 8)
-    .frame(minWidth: 300, minHeight: 300)
   }
+
 
   var text: some View {
     VStack {
       Text(plant.name)
+        .padding(.top, 10)
+        .padding(.horizontal, 30)
+        .padding(.bottom, 25)
+        .font(.title)
     }
   }
 }

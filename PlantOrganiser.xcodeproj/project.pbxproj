@@ -24,6 +24,7 @@
 		335E1D3E2C0DB86F0061875C /* PlantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D3D2C0DB86F0061875C /* PlantList.swift */; };
 		335E1D412C0DE77B0061875C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D402C0DE77B0061875C /* Card.swift */; };
 		335E1D432C0DE8B20061875C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D422C0DE8B20061875C /* ImagePicker.swift */; };
+		335E1D452C0EFA810061875C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E1D442C0EFA810061875C /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		335E1D3D2C0DB86F0061875C /* PlantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantList.swift; sourceTree = "<group>"; };
 		335E1D402C0DE77B0061875C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		335E1D422C0DE8B20061875C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		335E1D442C0EFA810061875C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			children = (
 				335E1D402C0DE77B0061875C /* Card.swift */,
 				335E1D422C0DE8B20061875C /* ImagePicker.swift */,
+				335E1D442C0EFA810061875C /* Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				3312BCAB2C05CBB9000D0ACF /* PlantCareInstruction.swift in Sources */,
 				335E1D3C2C09C5C50061875C /* PlantCare.swift in Sources */,
 				3312BCA92C05C7F9000D0ACF /* Plant.swift in Sources */,
+				335E1D452C0EFA810061875C /* Extensions.swift in Sources */,
 				3312BCAF2C05CE96000D0ACF /* PlantDetail.swift in Sources */,
 				335E1D432C0DE8B20061875C /* ImagePicker.swift in Sources */,
 				3312BC7E2C05C518000D0ACF /* PlantOrganiserApp.swift in Sources */,
