@@ -15,13 +15,25 @@ struct Card: View {
         .frame(maxWidth: .infinity, maxHeight: 200)
 
       HStack(alignment: .center) {
-        Text(plant.name)
-          .font(.title)
+        VStack(alignment: .leading) {
+          Text(plant.name)
+            .font(.title)
+            .foregroundStyle(Color.black)
+
+          Text("Shower every: \(plant.careInstruction.wateringFrequency.value) \(plant.careInstruction.wateringFrequency.unit.rawValue)")
+
+          if let showeringFrequency = plant.careInstruction.showeringFrequency {
+            Text("Shower every: \(showeringFrequency.value) \(showeringFrequency.unit.rawValue)")
+          }
+
+          if let sprinklingFrequency = plant.careInstruction.sprinklingFrequency {
+            Text("Shower every: \(sprinklingFrequency.value) \(sprinklingFrequency.unit.rawValue)")
+          }
+        }
         Spacer()
-        ImagePicker(plant: plant, { pickedImage in
-          image = pickedImage ?? Image("plant-placeholder")
-        })
+        Image(systemName: "chevron.forward")
       }
+      .foregroundStyle(Color.gray)
       .padding(.horizontal, 30)
       .padding(.top, 10)
       .padding(.bottom, 20)
