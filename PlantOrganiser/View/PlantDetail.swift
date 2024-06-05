@@ -7,6 +7,8 @@ struct PlantDetail: View {
   @Environment(\.dismiss) private var dismiss
   @Environment(\.modelContext) private var modelContext
 
+  @State private var showDeleteConfirmation = false
+
   private let isNew: Bool
 
   init(plant: Plant, isNew: Bool = false) {
@@ -50,10 +52,7 @@ struct PlantDetail: View {
       } else {
         ToolbarItem(placement: .destructiveAction) {
           Button(action: {
-            dismiss() // Dismiss the view first
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-              modelContext.delete(plant) // Delete the plant after a short delay
-            }
+            showDeleteConfirmation = true
           }, label: {
             Text("Delete")
               .foregroundStyle(Color.red)
@@ -61,6 +60,19 @@ struct PlantDetail: View {
         }
       }
     }
+    .alert(isPresented: $showDeleteConfirmation, content: {
+      Alert(
+        title: Text("Delete Plant"),
+        message: Text("Are you sure you want to delete this plant?"),
+        primaryButton: .destructive(Text("Delete")) {
+          dismiss() // Dismiss the view first
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            modelContext.delete(plant) // Delete the plant after a short delay
+          }
+        },
+        secondaryButton: .cancel())
+    })
+
   }
 }
 

@@ -2,9 +2,11 @@
 import Foundation
 import SwiftData
 
-let defaultCareInstruction = PlantCareInstruction(
-  wateringFrequency: Frequency(value: 1, unit: .week)
-)
+var defaultCareInstruction: PlantCareInstruction {
+  PlantCareInstruction(
+    wateringFrequency: Frequency(value: 1, unit: .week)
+  )
+}
 
 @Model
 final class PlantCareInstruction {
