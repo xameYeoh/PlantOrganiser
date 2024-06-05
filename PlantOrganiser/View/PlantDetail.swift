@@ -2,10 +2,11 @@ import SwiftUI
 import SwiftData
 
 struct PlantDetail: View {
+  @Environment(PlantListViewModel.self) private var viewModel
+
   @Bindable private var plant: Plant
 
   @Environment(\.dismiss) private var dismiss
-  @Environment(\.modelContext) private var modelContext
 
   @State private var showDeleteConfirmation = false
 
@@ -28,9 +29,6 @@ struct PlantDetail: View {
       Form {
         Section("Name") {
           TextField("Plant name", text: $plant.name)
-            .onChange(of: plant.name) { oldValue, newValue in
-              print(modelContext.sqliteCommand)
-            }
         }
         PlantCare(careInstruction: plant.careInstruction)
       }
@@ -41,12 +39,13 @@ struct PlantDetail: View {
         ToolbarItem(placement: .confirmationAction) {
           Button("Done") {
             dismiss()
+            viewModel.clearNewPlant()
           }
         }
         ToolbarItem(placement: .cancellationAction) {
           Button("Cancel") {
             dismiss()
-            modelContext.delete(plant)
+            viewModel.cancelAddingPlant()
           }
         }
       } else {
@@ -65,10 +64,8 @@ struct PlantDetail: View {
         title: Text("Delete Plant"),
         message: Text("Are you sure you want to delete this plant?"),
         primaryButton: .destructive(Text("Delete")) {
-          dismiss() // Dismiss the view first
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            modelContext.delete(plant) // Delete the plant after a short delay
-          }
+          dismiss()
+          viewModel.delete(plant)
         },
         secondaryButton: .cancel())
     })

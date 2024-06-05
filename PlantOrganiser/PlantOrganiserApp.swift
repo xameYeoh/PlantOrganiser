@@ -3,6 +3,12 @@ import SwiftData
 
 @main
 struct PlantOrganiserApp: App {
+  @State private var plantListViewModel: PlantListViewModel
+
+  init() {
+    plantListViewModel = PlantListViewModel(modelContext: sharedModelContainer.mainContext)
+  }
+
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([
       Plant.self,
@@ -17,10 +23,13 @@ struct PlantOrganiserApp: App {
       fatalError("Could not create ModelContainer: \(error)")
     }
   }()
+
+
   var body: some Scene {
     WindowGroup {
       ContentView()
     }
     .modelContainer(sharedModelContainer)
+    .environment(plantListViewModel)
   }
 }
