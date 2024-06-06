@@ -3,10 +3,10 @@ import SwiftData
 
 @main
 struct PlantOrganiserApp: App {
-  @State private var plantListViewModel: PlantListViewModel
+  @State private var plantListViewModel: PlantViewModel
 
   init() {
-    plantListViewModel = PlantListViewModel(modelContext: sharedModelContainer.mainContext)
+    plantListViewModel = PlantViewModel(modelContext: sharedModelContainer.mainContext)
   }
 
   var sharedModelContainer: ModelContainer = {

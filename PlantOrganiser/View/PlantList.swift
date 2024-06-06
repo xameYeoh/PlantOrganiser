@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct PlantList: View {
-  @Environment(PlantListViewModel.self) var viewModel
+  @Environment(PlantViewModel.self) private var viewModel
 
   @State private var isConfirmationDialogShown: Bool = false
   @State private var isSheetShown = false
@@ -54,11 +54,12 @@ struct PlantList: View {
   NavigationStack {
     PlantList()
   }
-  .modelContainer(SampleData.shared.modelContainer)
+  .previewEnvironment()
 }
 
 #Preview("Empty") {
   NavigationStack {
     PlantList()
   }
+  .previewEnvironment()
 }

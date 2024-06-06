@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct PlantDetail: View {
-  @Environment(PlantListViewModel.self) private var viewModel
+  @Environment(PlantViewModel.self) private var viewModel
 
   @Bindable private var plant: Plant
 
@@ -20,12 +20,19 @@ struct PlantDetail: View {
   var body: some View {
     VStack {
       let image = Image(data: plant.image) ?? Image("plant-placeholder")
-      image
-        .resizable()
-        .centerCropped()
-        .frame(height: 170)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .padding()
+      ImagePicker(
+        plant: plant,
+        label: image
+          .resizable()
+          .centerCropped()
+          .frame(height: 170)
+          .clipShape(RoundedRectangle(cornerRadius: 12))
+          .padding(),
+        { pickedImageData in
+          plant.image = pickedImageData
+        }
+      )
+
       Form {
         Section("Name") {
           TextField("Plant name", text: $plant.name)
@@ -77,7 +84,7 @@ struct PlantDetail: View {
   NavigationStack {
     PlantDetail(plant: SampleData.shared.plant)
   }
-  .modelContainer(SampleData.shared.modelContainer)
+  .previewEnvironment()
 }
 
 #Preview("New") {
@@ -88,5 +95,5 @@ struct PlantDetail: View {
     )
       .navigationBarTitleDisplayMode(.inline)
   }
-  .modelContainer(SampleData.shared.modelContainer)
+  .previewEnvironment()
 }

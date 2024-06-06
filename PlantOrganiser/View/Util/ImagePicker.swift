@@ -1,16 +1,22 @@
 import SwiftUI
 import PhotosUI
 
-struct ImagePicker: View {
+struct ImagePicker<Content: View>: View {
   @Bindable private var plant: Plant
 
   @State private var item: PhotosPickerItem?
 
-  private let saveImage: (Image?) -> Void
+  private let onImageDataReceived: (Data?) -> Void
+  private let label: Content
 
-  init(plant: Plant, _ saveImage: @escaping (Image?) -> Void) {
+  init(
+    plant: Plant,
+    label: Content,
+    _ saveImage: @escaping (Data?) -> Void
+  ) {
     self.plant = plant
-    self.saveImage = saveImage
+    self.onImageDataReceived = saveImage
+    self.label = label
   }
 
   var body: some View {
@@ -18,36 +24,18 @@ struct ImagePicker: View {
       selection: $item,
       matching: .images,
       label: {
-        Text("Change photo")
+        label
       }
     )
     .onChange(of: item) {
       Task {
-        plant.image = try? await item?.loadTransferable(type: Data.self)
+        onImageDataReceived(try? await item?.loadTransferable(type: Data.self))
       }
     }
   }
 }
-//func saveImageToDocumentsDirectory(image: UIImage) -> String? {
-//  guard let data = image.jpegData(compressionQuality: 1) else { return nil }
-//  let filename = UUID().uuidString + ".jpg"
-//  let url = getDocumentsDirectory().appendingPathComponent(filename)
-//
-//  do {
-//    try data.write(to: url)
-//    return filename
-//  } catch {
-//    print("Failed to save image: \(error)")
-//    return nil
-//  }
-//}
-
-//func loadImageFromDocumentsDirectory(filename: String) -> UIImage? {
-//  let url = getDocumentsDirectory().appendingPathComponent(filename)
-//  return UIImage(contentsOfFile: url.path)
-//}
 
 #Preview {
-  ImagePicker(plant: SampleData.shared.plant) {_ in }
+  ImagePicker(plant: SampleData.shared.plant, label: Text("Pick image")) {_ in }
     .modelContainer(SampleData.shared.modelContainer)
 }

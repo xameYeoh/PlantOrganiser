@@ -2,16 +2,14 @@ import SwiftUI
 
 struct PlantCard: View {
   @Bindable private var plant: Plant
-  @State private var image: Image
 
   init(plant: Plant) {
     self.plant = plant
-    self.image = Image(data: plant.image) ?? Image("plant-placeholder")
   }
 
   var body: some View {
     VStack(alignment: .leading) {
-      image
+      Image(dataOrPlaceholder: plant.image)
         .centerCropped()
 
       HStack(alignment: .center) {
